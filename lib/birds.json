@@ -1,0 +1,1086 @@
+[
+    {
+        "label": "Blackpoll Warbler",
+        "value": "blackpoll_warbler"
+    },
+    {
+        "label": "Cerulean Warbler",
+        "value": "cerulean_warbler"
+    },
+    {
+        "label": "Yellow-throated Vireo",
+        "value": "yellow_throated_vireo"
+    },
+    {
+        "label": "American Bittern",
+        "value": "american_bittern"
+    },
+    {
+        "label": "American Golden-Plover",
+        "value": "american_golden_plover"
+    },
+    {
+        "label": "Purple Finch",
+        "value": "purple_finch"
+    },
+    {
+        "label": "Short-eared Owl",
+        "value": "short_eared_owl"
+    },
+    {
+        "label": "Merlin",
+        "value": "merlin"
+    },
+    {
+        "label": "Horned Grebe",
+        "value": "horned_grebe"
+    },
+    {
+        "label": "Bonaparte's Gull",
+        "value": "bonapartes_gull"
+    },
+    {
+        "label": "Purple Sandpiper",
+        "value": "purple_sandpiper"
+    },
+    {
+        "label": "Common Goldeneye",
+        "value": "common_goldeneye"
+    },
+    {
+        "label": "Lesser Scaup",
+        "value": "lesser_scaup"
+    },
+    {
+        "label": "Greater White-fronted Goose",
+        "value": "greater_white_fronted_goose"
+    },
+    {
+        "label": "Canvasback",
+        "value": "canvasback"
+    },
+    {
+        "label": "California Gnatcatcher",
+        "value": "california_gnatcatcher"
+    },
+    {
+        "label": "Red-masked Parakeet",
+        "value": "red_masked_parakeet"
+    },
+    {
+        "label": "Black Turnstone",
+        "value": "black_turnstone"
+    },
+    {
+        "label": "Brandt's Cormorant",
+        "value": "brandts_cormorant"
+    },
+    {
+        "label": "American Herring Gull",
+        "value": "american_herring_gull"
+    },
+    {
+        "label": "Heermann's Gull",
+        "value": "heermanns_gull"
+    },
+    {
+        "label": "Black Oystercatcher",
+        "value": "black_oystercatcher"
+    },
+    {
+        "label": "Wrentit",
+        "value": "wrentit"
+    },
+    {
+        "label": "Western Gull",
+        "value": "western_gull"
+    },
+    {
+        "label": "Long-billed Curlew",
+        "value": "long_billed_curlew"
+    },
+    {
+        "label": "Whimbrel",
+        "value": "whimbrel"
+    },
+    {
+        "label": "California Towhee",
+        "value": "california_towhee"
+    },
+    {
+        "label": "Cassin's Kingbird",
+        "value": "cassins_kingbird"
+    },
+    {
+        "label": "Swinhoe's White-eye",
+        "value": "swinhoes_white_eye"
+    },
+    {
+        "label": "Allen's Hummingbird",
+        "value": "allens_hummingbird"
+    },
+    {
+        "label": "American Pipit",
+        "value": "american_pipit"
+    },
+    {
+        "label": "Horned Lark",
+        "value": "horned_lark"
+    },
+    {
+        "label": "Western Meadowlark",
+        "value": "western_meadowlark"
+    },
+    {
+        "label": "Ruddy Duck",
+        "value": "ruddy_duck"
+    },
+    {
+        "label": "Northern Pintail",
+        "value": "northern_pintail"
+    },
+    {
+        "label": "Bufflehead",
+        "value": "bufflehead"
+    },
+    {
+        "label": "Red-headed Woodpecker",
+        "value": "red_headed_woodpecker"
+    },
+    {
+        "label": "Harris's Hawk",
+        "value": "harriss_hawk"
+    },
+    {
+        "label": "Pygmy Nuthatch",
+        "value": "pygmy_nuthatch"
+    },
+    {
+        "label": "Townsend's Warbler",
+        "value": "townsends_warbler"
+    },
+    {
+        "label": "Steller's Jay",
+        "value": "stellers_jay"
+    },
+    {
+        "label": "Yellow-eyed Junco",
+        "value": "yellow_eyed_junco"
+    },
+    {
+        "label": "Mexican Jay",
+        "value": "mexican_jay"
+    },
+    {
+        "label": "Acorn Woodpecker",
+        "value": "acorn_woodpecker"
+    },
+    {
+        "label": "Broad-billed Hummingbird",
+        "value": "broad_billed_hummingbird"
+    },
+    {
+        "label": "Green-tailed Towhee",
+        "value": "green_tailed_towhee"
+    },
+    {
+        "label": "Canyon Towhee",
+        "value": "canyon_towhee"
+    },
+    {
+        "label": "Rufous-winged Sparrow",
+        "value": "rufous_winged_sparrow"
+    },
+    {
+        "label": "Rock Wren",
+        "value": "rock_wren"
+    },
+    {
+        "label": "Loggerhead Shrike",
+        "value": "loggerhead_shrike"
+    },
+    {
+        "label": "Black-throated Gray Warbler",
+        "value": "black_throated_gray_warbler"
+    },
+    {
+        "label": "Abert's Towhee",
+        "value": "aberts_towhee"
+    },
+    {
+        "label": "Vermilion Flycatcher",
+        "value": "vermilion_flycatcher"
+    },
+    {
+        "label": "Black Phoebe",
+        "value": "black_phoebe"
+    },
+    {
+        "label": "Ladder-backed Woodpecker",
+        "value": "ladder_backed_woodpecker"
+    },
+    {
+        "label": "Red-naped Sapsucker",
+        "value": "red_naped_sapsucker"
+    },
+    {
+        "label": "Anna's Hummingbird",
+        "value": "annas_hummingbird"
+    },
+    {
+        "label": "Vaux's Swift",
+        "value": "vauxs_swift"
+    },
+    {
+        "label": "Pyrrhuloxia",
+        "value": "pyrrhuloxia"
+    },
+    {
+        "label": "Black-throated Sparrow",
+        "value": "black_throated_sparrow"
+    },
+    {
+        "label": "House Finch",
+        "value": "house_finch"
+    },
+    {
+        "label": "Phainopepla",
+        "value": "phainopepla"
+    },
+    {
+        "label": "Curve-billed Thrasher",
+        "value": "curve_billed_thrasher"
+    },
+    {
+        "label": "Cactus Wren",
+        "value": "cactus_wren"
+    },
+    {
+        "label": "Black-tailed Gnatcatcher",
+        "value": "black_tailed_gnatcatcher"
+    },
+    {
+        "label": "Verdin",
+        "value": "verdin"
+    },
+    {
+        "label": "Gila Woodpecker",
+        "value": "gila_woodpecker"
+    },
+    {
+        "label": "Costa's Hummingbird",
+        "value": "costas_hummingbird"
+    },
+    {
+        "label": "Gambel's Quail",
+        "value": "gambels_quail"
+    },
+    {
+        "label": "Blue-headed Vireo",
+        "value": "blue_headed_vireo"
+    },
+    {
+        "label": "Cape May Warbler",
+        "value": "cape_may_warbler"
+    },
+    {
+        "label": "Connecticut Warbler",
+        "value": "connecticut_warbler"
+    },
+    {
+        "label": "Common Raven",
+        "value": "common_raven"
+    },
+    {
+        "label": "Black-throated Blue Warbler",
+        "value": "black_throated_blue_warbler"
+    },
+    {
+        "label": "Black-capped Chickadee",
+        "value": "black_capped_chickadee"
+    },
+    {
+        "label": "Olive-sided Flycatcher",
+        "value": "olive_sided_flycatcher"
+    },
+    {
+        "label": "Sora",
+        "value": "sora"
+    },
+    {
+        "label": "Pectoral Sandpiper",
+        "value": "pectoral_sandpiper"
+    },
+    {
+        "label": "Chuck-will's-widow",
+        "value": "chuck_wills_widow"
+    },
+    {
+        "label": "Cliff Swallow",
+        "value": "cliff_swallow"
+    },
+    {
+        "label": "Caspian Tern",
+        "value": "caspian_tern"
+    },
+    {
+        "label": "Aplomado Falcon",
+        "value": "aplomado_falcon"
+    },
+    {
+        "label": "Magnificent Frigatebird",
+        "value": "magnificent_frigatebird"
+    },
+    {
+        "label": "Tricolored Heron",
+        "value": "tricolored_heron"
+    },
+    {
+        "label": "White Ibis",
+        "value": "white_ibis"
+    },
+    {
+        "label": "Greater Yellowlegs",
+        "value": "greater_yellowlegs"
+    },
+    {
+        "label": "Long-billed Dowitcher",
+        "value": "long_billed_dowitcher"
+    },
+    {
+        "label": "Short-billed Dowitcher",
+        "value": "short_billed_dowitcher"
+    },
+    {
+        "label": "Black-bellied Plover",
+        "value": "black_bellied_plover"
+    },
+    {
+        "label": "Mottled Duck",
+        "value": "mottled_duck"
+    },
+    {
+        "label": "Little Blue Heron",
+        "value": "little_blue_heron"
+    },
+    {
+        "label": "Reddish Egret",
+        "value": "reddish_egret"
+    },
+    {
+        "label": "Ruddy Turnstone",
+        "value": "ruddy_turnstone"
+    },
+    {
+        "label": "Sandwich Tern",
+        "value": "sandwich_tern"
+    },
+    {
+        "label": "Snowy Egret",
+        "value": "snowy_egret"
+    },
+    {
+        "label": "Crested Caracara",
+        "value": "crested_caracara"
+    },
+    {
+        "label": "Western Cattle-Egret",
+        "value": "western_cattle_egret"
+    },
+    {
+        "label": "Scissor-tailed Flycatcher",
+        "value": "scissor_tailed_flycatcher"
+    },
+    {
+        "label": "Western Kingbird",
+        "value": "western_kingbird"
+    },
+    {
+        "label": "Canada Warbler",
+        "value": "canada_warbler"
+    },
+    {
+        "label": "Blackburnian Warbler",
+        "value": "blackburnian_warbler"
+    },
+    {
+        "label": "Least Sandpiper",
+        "value": "least_sandpiper"
+    },
+    {
+        "label": "Northern Waterthrush",
+        "value": "northern_waterthrush"
+    },
+    {
+        "label": "Sharp-shinned Hawk",
+        "value": "sharp_shinned_hawk"
+    },
+    {
+        "label": "Lark Sparrow",
+        "value": "lark_sparrow"
+    },
+    {
+        "label": "Blue-winged Warbler",
+        "value": "blue_winged_warbler"
+    },
+    {
+        "label": "Spotted Sandpiper",
+        "value": "spotted_sandpiper"
+    },
+    {
+        "label": "Common Loon",
+        "value": "common_loon"
+    },
+    {
+        "label": "Lesser Yellowlegs",
+        "value": "lesser_yellowlegs"
+    },
+    {
+        "label": "Solitary Sandpiper",
+        "value": "solitary_sandpiper"
+    },
+    {
+        "label": "Louisiana Waterthrush",
+        "value": "louisiana_waterthrush"
+    },
+    {
+        "label": "Pine Warbler",
+        "value": "pine_warbler"
+    },
+    {
+        "label": "American Woodcock",
+        "value": "american_woodcock"
+    },
+    {
+        "label": "Fox Sparrow",
+        "value": "fox_sparrow"
+    },
+    {
+        "label": "Hooded Merganser",
+        "value": "hooded_merganser"
+    },
+    {
+        "label": "American White Pelican",
+        "value": "american_white_pelican"
+    },
+    {
+        "label": "American Black Duck",
+        "value": "american_black_duck"
+    },
+    {
+        "label": "Northern Shoveler",
+        "value": "northern_shoveler"
+    },
+    {
+        "label": "Inca Dove",
+        "value": "inca_dove"
+    },
+    {
+        "label": "Orange-crowned Warbler",
+        "value": "orange_crowned_warbler"
+    },
+    {
+        "label": "Spotted Towhee",
+        "value": "spotted_towhee"
+    },
+    {
+        "label": "Neotropic Cormorant",
+        "value": "neotropic_cormorant"
+    },
+    {
+        "label": "Egyptian Goose",
+        "value": "egyptian_goose"
+    },
+    {
+        "label": "Golden-fronted Woodpecker",
+        "value": "golden_fronted_woodpecker"
+    },
+    {
+        "label": "Bewick's Wren",
+        "value": "bewicks_wren"
+    },
+    {
+        "label": "White-crowned Sparrow",
+        "value": "white_crowned_sparrow"
+    },
+    {
+        "label": "Vesper Sparrow",
+        "value": "vesper_sparrow"
+    },
+    {
+        "label": "Ring-necked Duck",
+        "value": "ring_necked_duck"
+    },
+    {
+        "label": "Gadwall",
+        "value": "gadwall"
+    },
+    {
+        "label": "Ring-billed Gull",
+        "value": "ring_billed_gull"
+    },
+    {
+        "label": "American Wigeon",
+        "value": "american_wigeon"
+    },
+    {
+        "label": "Snow Goose",
+        "value": "snow_goose"
+    },
+    {
+        "label": "Brown Creeper",
+        "value": "brown_creeper"
+    },
+    {
+        "label": "Dark-eyed Junco",
+        "value": "dark_eyed_junco"
+    },
+    {
+        "label": "Rusty Blackbird",
+        "value": "rusty_blackbird"
+    },
+    {
+        "label": "Northern Harrier",
+        "value": "northern_harrier"
+    },
+    {
+        "label": "Pine Siskin",
+        "value": "pine_siskin"
+    },
+    {
+        "label": "American Coot",
+        "value": "american_coot"
+    },
+    {
+        "label": "Green-winged Teal",
+        "value": "green_winged_teal"
+    },
+    {
+        "label": "Blue-winged Teal",
+        "value": "blue_winged_teal"
+    },
+    {
+        "label": "Yellow-bellied Sapsucker",
+        "value": "yellow_bellied_sapsucker"
+    },
+    {
+        "label": "Hermit Thrush",
+        "value": "hermit_thrush"
+    },
+    {
+        "label": "Lincoln's Sparrow",
+        "value": "lincolns_sparrow"
+    },
+    {
+        "label": "White-throated Sparrow",
+        "value": "white_throated_sparrow"
+    },
+    {
+        "label": "Winter Wren",
+        "value": "winter_wren"
+    },
+    {
+        "label": "Ruby-crowned Kinglet",
+        "value": "ruby_crowned_kinglet"
+    },
+    {
+        "label": "Swamp Sparrow",
+        "value": "swamp_sparrow"
+    },
+    {
+        "label": "Savannah Sparrow",
+        "value": "savannah_sparrow"
+    },
+    {
+        "label": "Golden-crowned Kinglet",
+        "value": "golden_crowned_kinglet"
+    },
+    {
+        "label": "Wilson's Snipe",
+        "value": "wilsons_snipe"
+    },
+    {
+        "label": "Yellow-rumped Warbler",
+        "value": "yellow_rumped_warbler"
+    },
+    {
+        "label": "Nashville Warbler",
+        "value": "nashville_warbler"
+    },
+    {
+        "label": "Tennessee Warbler",
+        "value": "tennessee_warbler"
+    },
+    {
+        "label": "Bay-breasted Warbler",
+        "value": "bay_breasted_warbler"
+    },
+    {
+        "label": "Say's Phoebe",
+        "value": "says_phoebe"
+    },
+    {
+        "label": "American Kestrel",
+        "value": "american_kestrel"
+    },
+    {
+        "label": "Chestnut-sided Warbler",
+        "value": "chestnut_sided_warbler"
+    },
+    {
+        "label": "Gray Catbird",
+        "value": "gray_catbird"
+    },
+    {
+        "label": "Least Flycatcher",
+        "value": "least_flycatcher"
+    },
+    {
+        "label": "Rose-breasted Grosbeak",
+        "value": "rose_breasted_grosbeak"
+    },
+    {
+        "label": "Philadelphia Vireo",
+        "value": "philadelphia_vireo"
+    },
+    {
+        "label": "Palm Warbler",
+        "value": "palm_warbler"
+    },
+    {
+        "label": "Gray-cheeked Thrush",
+        "value": "gray_cheeked_thrush"
+    },
+    {
+        "label": "Veery",
+        "value": "veery"
+    },
+    {
+        "label": "Hooded Warbler",
+        "value": "hooded_warbler"
+    },
+    {
+        "label": "Ovenbird",
+        "value": "ovenbird"
+    },
+    {
+        "label": "Black-throated Green Warbler",
+        "value": "black_throated_green_warbler"
+    },
+    {
+        "label": "Magnolia Warbler",
+        "value": "magnolia_warbler"
+    },
+    {
+        "label": "Baltimore Oriole",
+        "value": "baltimore_oriole"
+    },
+    {
+        "label": "Scarlet Tanager",
+        "value": "scarlet_tanager"
+    },
+    {
+        "label": "Wilson's Warbler",
+        "value": "wilsons_warbler"
+    },
+    {
+        "label": "American Redstart",
+        "value": "american_redstart"
+    },
+    {
+        "label": "Chipping Sparrow",
+        "value": "chipping_sparrow"
+    },
+    {
+        "label": "Black-and-white Warbler",
+        "value": "black_and_white_warbler"
+    },
+    {
+        "label": "Hairy Woodpecker",
+        "value": "hairy_woodpecker"
+    },
+    {
+        "label": "Northern House Wren",
+        "value": "northern_house_wren"
+    },
+    {
+        "label": "Yellow Warbler",
+        "value": "yellow_warbler"
+    },
+    {
+        "label": "Eurasian Collared-Dove",
+        "value": "eurasian_collared_dove"
+    },
+    {
+        "label": "Great-tailed Grackle",
+        "value": "great_tailed_grackle"
+    },
+    {
+        "label": "Brown Pelican",
+        "value": "brown_pelican"
+    },
+    {
+        "label": "Royal Tern",
+        "value": "royal_tern"
+    },
+    {
+        "label": "Black Tern",
+        "value": "black_tern"
+    },
+    {
+        "label": "Least Tern",
+        "value": "least_tern"
+    },
+    {
+        "label": "Laughing Gull",
+        "value": "laughing_gull"
+    },
+    {
+        "label": "Willet",
+        "value": "willet"
+    },
+    {
+        "label": "Yellow-crowned Night Heron",
+        "value": "yellow_crowned_night_heron"
+    },
+    {
+        "label": "Pied-billed Grebe",
+        "value": "pied_billed_grebe"
+    },
+    {
+        "label": "Black-bellied Whistling-Duck",
+        "value": "black_bellied_whistling_duck"
+    },
+    {
+        "label": "Black-crested Titmouse",
+        "value": "black_crested_titmouse"
+    },
+    {
+        "label": "Lesser Goldfinch",
+        "value": "lesser_goldfinch"
+    },
+    {
+        "label": "Black-chinned Hummingbird",
+        "value": "black_chinned_hummingbird"
+    },
+    {
+        "label": "White-winged Dove",
+        "value": "white_winged_dove"
+    },
+    {
+        "label": "White-breasted Nuthatch",
+        "value": "white_breasted_nuthatch"
+    },
+    {
+        "label": "Brown Thrasher",
+        "value": "brown_thrasher"
+    },
+    {
+        "label": "Yellow-billed Cuckoo",
+        "value": "yellow_billed_cuckoo"
+    },
+    {
+        "label": "Mississippi Kite",
+        "value": "mississippi_kite"
+    },
+    {
+        "label": "Rock Pigeon",
+        "value": "rock_pigeon"
+    },
+    {
+        "label": "Summer Tanager",
+        "value": "summer_tanager"
+    },
+    {
+        "label": "Northern Flicker",
+        "value": "northern_flicker"
+    },
+    {
+        "label": "Great Egret",
+        "value": "great_egret"
+    },
+    {
+        "label": "Black-crowned Night Heron",
+        "value": "black_crowned_night_heron"
+    },
+    {
+        "label": "Red-tailed Hawk",
+        "value": "red_tailed_hawk"
+    },
+    {
+        "label": "Kentucky Warbler",
+        "value": "kentucky_warbler"
+    },
+    {
+        "label": "Acadian Flycatcher",
+        "value": "acadian_flycatcher"
+    },
+    {
+        "label": "Bald Eagle",
+        "value": "bald_eagle"
+    },
+    {
+        "label": "Double-crested Cormorant",
+        "value": "double_crested_cormorant"
+    },
+    {
+        "label": "Blue Grosbeak",
+        "value": "blue_grosbeak"
+    },
+    {
+        "label": "Red-eyed Vireo",
+        "value": "red_eyed_vireo"
+    },
+    {
+        "label": "Eastern Phoebe",
+        "value": "eastern_phoebe"
+    },
+    {
+        "label": "Belted Kingfisher",
+        "value": "belted_kingfisher"
+    },
+    {
+        "label": "Eastern Meadowlark",
+        "value": "eastern_meadowlark"
+    },
+    {
+        "label": "Killdeer",
+        "value": "killdeer"
+    },
+    {
+        "label": "Common Nighthawk",
+        "value": "common_nighthawk"
+    },
+    {
+        "label": "House Sparrow",
+        "value": "house_sparrow"
+    },
+    {
+        "label": "European Starling",
+        "value": "european_starling"
+    },
+    {
+        "label": "Canada Goose",
+        "value": "canada_goose"
+    },
+    {
+        "label": "Yellow-breasted Chat",
+        "value": "yellow_breasted_chat"
+    },
+    {
+        "label": "Blue Jay",
+        "value": "blue_jay"
+    },
+    {
+        "label": "Barn Swallow",
+        "value": "barn_swallow"
+    },
+    {
+        "label": "American Robin",
+        "value": "american_robin"
+    },
+    {
+        "label": "Fish Crow",
+        "value": "fish_crow"
+    },
+    {
+        "label": "Red-bellied Woodpecker",
+        "value": "red_bellied_woodpecker"
+    },
+    {
+        "label": "Chimney Swift",
+        "value": "chimney_swift"
+    },
+    {
+        "label": "Prairie Warbler",
+        "value": "prairie_warbler"
+    },
+    {
+        "label": "Northern Rough-winged Swallow",
+        "value": "northern_rough_winged_swallow"
+    },
+    {
+        "label": "White-eyed Vireo",
+        "value": "white_eyed_vireo"
+    },
+    {
+        "label": "Northern Parula",
+        "value": "northern_parula"
+    },
+    {
+        "label": "Barred Owl",
+        "value": "barred_owl"
+    },
+    {
+        "label": "Cooper's Hawk",
+        "value": "coopers_hawk"
+    },
+    {
+        "label": "Brown-headed Cowbird",
+        "value": "brown_headed_cowbird"
+    },
+    {
+        "label": "Orchard Oriole",
+        "value": "orchard_oriole"
+    },
+    {
+        "label": "Eastern Wood-Pewee",
+        "value": "eastern_wood_pewee"
+    },
+    {
+        "label": "Mourning Dove",
+        "value": "mourning_dove"
+    },
+    {
+        "label": "Song Sparrow",
+        "value": "song_sparrow"
+    },
+    {
+        "label": "Purple Martin",
+        "value": "purple_martin"
+    },
+    {
+        "label": "Red-shouldered Hawk",
+        "value": "red_shouldered_hawk"
+    },
+    {
+        "label": "Yellow-throated Warbler",
+        "value": "yellow_throated_warbler"
+    },
+    {
+        "label": "Common Grackle",
+        "value": "common_grackle"
+    },
+    {
+        "label": "American Crow",
+        "value": "american_crow"
+    },
+    {
+        "label": "Osprey",
+        "value": "osprey"
+    },
+    {
+        "label": "Ruby-throated Hummingbird",
+        "value": "ruby_throated_hummingbird"
+    },
+    {
+        "label": "Prothonotary Warbler",
+        "value": "prothonotary_warbler"
+    },
+    {
+        "label": "Red-winged Blackbird",
+        "value": "red_winged_blackbird"
+    },
+    {
+        "label": "Field Sparrow",
+        "value": "field_sparrow"
+    },
+    {
+        "label": "Cedar Waxwing",
+        "value": "cedar_waxwing"
+    },
+    {
+        "label": "Eastern Bluebird",
+        "value": "eastern_bluebird"
+    },
+    {
+        "label": "Tufted Titmouse",
+        "value": "tufted_titmouse"
+    },
+    {
+        "label": "Pileated Woodpecker",
+        "value": "pileated_woodpecker"
+    },
+    {
+        "label": "Great Blue Heron",
+        "value": "great_blue_heron"
+    },
+    {
+        "label": "Green Heron",
+        "value": "green_heron"
+    },
+    {
+        "label": "Mallard",
+        "value": "mallard"
+    },
+    {
+        "label": "Wood Duck",
+        "value": "wood_duck"
+    },
+    {
+        "label": "Carolina Chickadee",
+        "value": "carolina_chickadee"
+    },
+    {
+        "label": "Great Crested Flycatcher",
+        "value": "great_crested_flycatcher"
+    },
+    {
+        "label": "Indigo Bunting",
+        "value": "indigo_bunting"
+    },
+    {
+        "label": "Northern Cardinal",
+        "value": "northern_cardinal"
+    },
+    {
+        "label": "Common Yellowthroat",
+        "value": "common_yellowthroat"
+    },
+    {
+        "label": "Eastern Towhee",
+        "value": "eastern_towhee"
+    },
+    {
+        "label": "American Goldfinch",
+        "value": "american_goldfinch"
+    },
+    {
+        "label": "Wood Thrush",
+        "value": "wood_thrush"
+    },
+    {
+        "label": "Swainson's Thrush",
+        "value": "swainsons_thrush"
+    },
+    {
+        "label": "Northern Mockingbird",
+        "value": "northern_mockingbird"
+    },
+    {
+        "label": "Carolina Wren",
+        "value": "carolina_wren"
+    },
+    {
+        "label": "Blue-gray Gnatcatcher",
+        "value": "blue_gray_gnatcatcher"
+    },
+    {
+        "label": "Tree Swallow",
+        "value": "tree_swallow"
+    },
+    {
+        "label": "Eastern Kingbird",
+        "value": "eastern_kingbird"
+    },
+    {
+        "label": "Downy Woodpecker",
+        "value": "downy_woodpecker"
+    },
+    {
+        "label": "Turkey Vulture",
+        "value": "turkey_vulture"
+    },
+    {
+        "label": "Black Vulture",
+        "value": "black_vulture"
+    },
+    {
+        "label": "Wild Turkey",
+        "value": "wild_turkey"
+    },
+    {
+        "label": "Burrowing Owl",
+        "value": "burrowing_owl"
+    }
+]
