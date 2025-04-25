@@ -1,0 +1,16 @@
+
+DESCRIPTION >
+    Stores bird sightings data including timestamp, species, location, quantity, checklist_id, and user_id
+
+SCHEMA >
+    `timestamp` DateTime `json:$.timestamp`,
+    `species` String `json:$.species`,
+    `location` String `json:$.location`,
+    `quantity` UInt32 `json:$.quantity`,
+    `checklist_id` String `json:$.checklist_id`,
+    `user_id` String `json:$.user_id`
+
+ENGINE "MergeTree"
+ENGINE_PARTITION_KEY "toYYYYMM(timestamp)"
+ENGINE_SORTING_KEY "user_id, timestamp, location"
+        
