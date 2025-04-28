@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { CalendarIcon, MapPin } from "lucide-react"
+import { useEffect, useState, useCallback } from "react"
+import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -43,7 +43,7 @@ export default function AnalyticsPage() {
   const [openStartDate, setOpenStartDate] = useState(false)
   const [openEndDate, setOpenEndDate] = useState(false)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setIsLoading(true)
     try {
       const [timeseries, totals] = await Promise.all([
@@ -79,11 +79,11 @@ export default function AnalyticsPage() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [startDate, endDate, selectedLocation])
 
   useEffect(() => {
     fetchData()
-  }, [startDate, endDate, selectedLocation])
+  }, [fetchData])
 
   const getBirdLabel = (value: string) => {
     const bird = birds.find(b => b.value === value)

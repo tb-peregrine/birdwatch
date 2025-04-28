@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid"
-
 const TINYBIRD_API_URL = process.env.NEXT_PUBLIC_TINYBIRD_API_URL
 const TINYBIRD_API_TOKEN = process.env.NEXT_PUBLIC_TINYBIRD_API_TOKEN
 

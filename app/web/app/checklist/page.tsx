@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { CalendarIcon, MapPin, Plus, X, Minus } from "lucide-react"
+import { CalendarIcon, Plus, X, Minus } from "lucide-react"
 import { format } from "date-fns"
 import { useRouter } from "next/navigation"
 import { v4 as uuidv4 } from "uuid"
