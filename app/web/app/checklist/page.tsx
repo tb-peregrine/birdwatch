@@ -104,17 +104,15 @@ export default function ChecklistPage() {
 
     try {
       const checklistId = uuidv4()
-      // Send each bird sighting as a separate event
-      await Promise.all(selectedBirds.map(bird =>
-        sendChecklistData({
-          timestamp: date.toISOString(),
-          location: selectedLocation,
-          species: bird.value,
-          quantity: bird.count,
-          checklist_id: checklistId
-        })
-      ))
+      const sightings = selectedBirds.map(bird => ({
+        timestamp: date.toISOString(),
+        location: selectedLocation,
+        species: bird.value,
+        quantity: bird.count,
+        checklist_id: checklistId
+      }))
 
+      await sendChecklistData(sightings)
       setMessage({ type: "success", text: "Checklist submitted successfully!" })
       setTimeout(() => {
         router.push(`/analytics?location=${encodeURIComponent(selectedLocation)}`)
