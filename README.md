@@ -1,6 +1,6 @@
-# eBird Clone
+# Birdwatch (eBird Clone)
 
-A modern web application for birdwatchers to record and track their bird sightings, inspired by eBird. Built with Next.js, TypeScript, and Tailwind CSS.
+A demo web application for birdwatchers to record and track their bird sightings, inspired by eBird. Built with Next.js, TypeScript, and Tinybird.
 
 ## Features
 
