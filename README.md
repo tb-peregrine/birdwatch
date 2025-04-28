@@ -26,11 +26,11 @@ A demo web application for birdwatchers to record and track their bird sightings
 
 ## Getting Started
 
-First, clone the repository:
+First, fork the repository.
 
 ```bash
-git clone https://github.com/yourusername/ebird-clone.git
-cd ebird-clone
+git clone https://github.com/yourusername/birdwatch.git
+cd birdwatch
 ```
 
 Install dependencies:
@@ -41,6 +41,12 @@ npm install
 yarn install
 # or
 pnpm install
+```
+
+Install the Tinybird CLI and login:
+```bash
+curl https://tinybird.co | sh
+tb login
 ```
 
 Set up environment variables:
@@ -67,19 +73,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Project Structure
 
-- `app/` - Next.js app router pages and components
-- `components/` - Reusable UI components
-- `lib/` - Utility functions and data
-- `public/` - Static assets
+- `app/web/` - Next.js app router pages, components, utilities, etc.
 - `tinybird/` - Tinybird data sources and endpoints
 
 ## Data
 
-The application uses several data sources:
-- `lib/birds.json` - List of bird species with common names
-- `lib/locations.json` - List of birding locations
 - Tinybird data sources:
   - `bird_sightings` - Stores checklist data
+- Tinybird endpoint pipes:
   - `timeseries_species_by_day` - Aggregates sightings by species and day
   - `get_totals` - Calculates total counts for birds, species, checklists, and locations
 
@@ -100,6 +101,10 @@ Check out the [Next.js deployment documentation](https://nextjs.org/docs/deploym
 7. Click "Deploy"
 
 Your site will be deployed at `https://your-project-name.vercel.app`
+
+### Deploying to Tinybird
+
+From the `tinybird` directory, run `tb --cloud deploy` to deploy your API to the TInybird workspace. Update your environment variables in Vercel with your host and token.
 
 ## Contributing
 
