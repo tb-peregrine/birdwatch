@@ -15,7 +15,6 @@ import { SiteHeader } from "@/components/site-header"
 import { cn } from "@/lib/utils"
 import birds from "@/lib/birds.json"
 import locations from "@/lib/locations.json"
-import { sendBirdSightings } from "@/lib/tinybird"
 
 interface Bird {
   label: string
@@ -41,51 +40,6 @@ export default function ChecklistPage() {
   const [showBirdList, setShowBirdList] = useState(false)
   const [locationSearch, setLocationSearch] = useState("")
   const [birdSearch, setBirdSearch] = useState("")
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleSubmit = async () => {
-    if (!date || !selectedLocation || selectedBirds.length === 0) {
-      return
-    }
-
-    setIsSubmitting(true)
-    try {
-      const checklistId = crypto.randomUUID()
-      const userId = "user_123" // TODO: Replace with actual user ID from auth
-
-      const sightings = selectedBirds.map((bird) => ({
-        timestamp: date.toISOString(),
-        species: bird.value,
-        location: selectedLocation,
-        quantity: bird.count,
-        checklist_id: checklistId,
-        user_id: userId,
-      }))
-
-      await sendBirdSightings(sightings)
-
-      // Show success message
-      setShowSuccessMessage(true)
-
-      // Reset all form data
-      setDate(undefined)
-      setSelectedBirds([])
-      setSelectedLocation("")
-      setLocationSearch("")
-      setBirdSearch("")
-
-      // Hide success message after 3 seconds
-      setTimeout(() => {
-        setShowSuccessMessage(false)
-      }, 3000)
-    } catch (error) {
-      console.error("Failed to submit checklist:", error)
-      // TODO: Show error message to user
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   const handleAddBird = (bird: Bird) => {
     setSelectedBirds((prev) => {
@@ -293,15 +247,7 @@ export default function ChecklistPage() {
                 )}
               </div>
 
-              {showSuccessMessage && (
-                <div className="p-4 bg-green-100 text-green-800 rounded-md">
-                  Checklist submitted!
-                </div>
-              )}
-
-              <Button onClick={handleSubmit} disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Submit Checklist"}
-              </Button>
+              <Button>Save Checklist</Button>
             </CardContent>
           </Card>
         </div>
