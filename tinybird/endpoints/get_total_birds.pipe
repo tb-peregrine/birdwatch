@@ -1,0 +1,25 @@
+DESCRIPTION >
+    Returns the total number of individual birds (sum of quantity), filterable by date range, location, and user_id
+
+NODE get_total_birds_node
+SQL >
+    %
+    SELECT 
+        sum(quantity) as total_birds
+    FROM bird_sightings
+    WHERE 1=1
+    {% if defined(start_date) %}
+        AND toDate(timestamp) >= {{Date(start_date, '2020-01-01')}}
+    {% end %}
+    {% if defined(end_date) %}
+        AND toDate(timestamp) <= {{Date(end_date, '2023-12-31')}}
+    {% end %}
+    {% if defined(location) %}
+        AND location = {{String(location, '')}}
+    {% end %}
+    {% if defined(user_id) %}
+        AND user_id = {{String(user_id, '')}}
+    {% end %}
+
+TYPE endpoint
+        
