@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react"
 import { CalendarIcon, MapPin } from "lucide-react"
 import { format } from "date-fns"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SiteHeader } from "@/components/site-header"
-import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
-import { fetchTimeseriesData, fetchTotalData, TimeseriesData } from "@/lib/tinybird"
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis, Legend } from "recharts"
+import { fetchTimeseriesData, fetchTotalData } from "@/lib/tinybird"
 import { subMonths } from "date-fns"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -16,9 +17,17 @@ import { Label } from "@/components/ui/label"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 import locations from "@/lib/locations.json"
+import birds from "@/lib/birds.json"
+
+interface TimeseriesDataPoint {
+  day: string;
+  [species: string]: number | string;
+}
 
 export default function AnalyticsPage() {
-  const [timeseriesData, setTimeseriesData] = useState<TimeseriesData[]>([])
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const [timeseriesData, setTimeseriesData] = useState<TimeseriesDataPoint[]>([])
   const [totalData, setTotalData] = useState({
     total_birds: 0,
     total_checklists: 0,
@@ -28,9 +37,25 @@ export default function AnalyticsPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [startDate, setStartDate] = useState<Date>(subMonths(new Date(), 1))
   const [endDate, setEndDate] = useState<Date>(new Date())
-  const [selectedLocation, setSelectedLocation] = useState<string>("")
+  const [selectedLocation, setSelectedLocation] = useState<string>(searchParams.get("location") || "")
   const [showLocationList, setShowLocationList] = useState(false)
   const [locationSearch, setLocationSearch] = useState("")
+  const [openStartDate, setOpenStartDate] = useState(false)
+  const [openEndDate, setOpenEndDate] = useState(false)
+
+  const handleStartDateSelect = (date: Date | undefined) => {
+    if (date) {
+      setStartDate(date)
+      setOpenStartDate(false)
+    }
+  }
+
+  const handleEndDateSelect = (date: Date | undefined) => {
+    if (date) {
+      setEndDate(date)
+      setOpenEndDate(false)
+    }
+  }
 
   const fetchData = async () => {
     setIsLoading(true)
@@ -48,16 +73,18 @@ export default function AnalyticsPage() {
         })
       ])
 
-      // Group the data by day and sum the birds_count
+      // Group the data by day and species
       const groupedData = timeseries.reduce((acc, curr) => {
         const existingDay = acc.find(item => item.day === curr.day)
         if (existingDay) {
-          existingDay.birds_count += curr.birds_count
+          existingDay[curr.species] = (existingDay[curr.species] as number || 0) + curr.birds_count
         } else {
-          acc.push({ ...curr })
+          const newDay: TimeseriesDataPoint = { day: curr.day }
+          newDay[curr.species] = curr.birds_count
+          acc.push(newDay)
         }
         return acc
-      }, [] as TimeseriesData[])
+      }, [] as TimeseriesDataPoint[])
 
       setTimeseriesData(groupedData)
       setTotalData(totals)
@@ -76,16 +103,9 @@ export default function AnalyticsPage() {
     (loc) => loc.value === selectedLocation
   )?.label
 
-  const handleStartDateSelect = (date: Date | undefined) => {
-    if (date) {
-      setStartDate(date)
-    }
-  }
-
-  const handleEndDateSelect = (date: Date | undefined) => {
-    if (date) {
-      setEndDate(date)
-    }
+  const getBirdLabel = (value: string) => {
+    const bird = birds.find(b => b.value === value)
+    return bird ? bird.label : value
   }
 
   return (
@@ -107,7 +127,7 @@ export default function AnalyticsPage() {
               <CardContent className="grid gap-4 md:grid-cols-3">
                 <div className="grid gap-2">
                   <Label>Start Date</Label>
-                  <Popover>
+                  <Popover open={openStartDate} onOpenChange={setOpenStartDate}>
                     <PopoverTrigger asChild>
                       <Button
                         variant="outline"
@@ -125,7 +145,7 @@ export default function AnalyticsPage() {
 
                 <div className="grid gap-2">
                   <Label>End Date</Label>
-                  <Popover>
+                  <Popover open={openEndDate} onOpenChange={setOpenEndDate}>
                     <PopoverTrigger asChild>
                       <Button
                         variant="outline"
@@ -227,17 +247,19 @@ export default function AnalyticsPage() {
               <Card>
                 <CardHeader>
                   <CardTitle>Bird Sightings Over Time</CardTitle>
-                  <CardDescription>Number of birds spotted per day</CardDescription>
+                  <CardDescription>Number of birds spotted per day by species</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="h-[400px] w-full">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={timeseriesData}>
                         <defs>
-                          <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
-                            <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
-                          </linearGradient>
+                          {Array.from({ length: 10 }).map((_, i) => (
+                            <linearGradient key={i} id={`color${i}`} x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor={`hsl(${i * 36}, 70%, 50%)`} stopOpacity={0.3} />
+                              <stop offset="95%" stopColor={`hsl(${i * 36}, 70%, 50%)`} stopOpacity={0} />
+                            </linearGradient>
+                          ))}
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
                         <XAxis
@@ -254,11 +276,14 @@ export default function AnalyticsPage() {
                             if (active && payload && payload.length) {
                               return (
                                 <div className="rounded-lg border bg-background p-2 shadow-sm">
-                                  <div className="grid grid-cols-2 gap-2">
-                                    <div className="font-medium">Date:</div>
-                                    <div>{payload[0].payload.day}</div>
-                                    <div className="font-medium">Count:</div>
-                                    <div>{payload[0].value}</div>
+                                  <div className="grid gap-2">
+                                    <div className="font-medium">Date: {payload[0].payload.day}</div>
+                                    {payload.map((entry, index) => (
+                                      <div key={index} className="flex items-center gap-2">
+                                        <div className="h-3 w-3 rounded-full" style={{ backgroundColor: entry.color }} />
+                                        <div>{entry.name}: {entry.value}</div>
+                                      </div>
+                                    ))}
                                   </div>
                                 </div>
                               )
@@ -266,7 +291,30 @@ export default function AnalyticsPage() {
                             return null
                           }}
                         />
-                        <Area type="monotone" dataKey="birds_count" stroke="hsl(var(--primary))" fill="url(#colorCount)" />
+                        <Legend
+                          verticalAlign="top"
+                          align="left"
+                          layout="vertical"
+                          height={36}
+                          wrapperStyle={{
+                            paddingRight: '20px'
+                          }}
+                          formatter={(value) => getBirdLabel(value)}
+                        />
+                        {Object.keys(timeseriesData[0] || {})
+                          .filter(key => key !== 'day')
+                          .slice(0, 10)
+                          .map((species, index) => (
+                            <Area
+                              key={species}
+                              type="monotone"
+                              dataKey={species}
+                              name={species}
+                              stroke={`hsl(${index * 36}, 70%, 50%)`}
+                              fill={`url(#color${index})`}
+                              stackId={undefined}
+                            />
+                          ))}
                       </AreaChart>
                     </ResponsiveContainer>
                   </div>

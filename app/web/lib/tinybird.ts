@@ -1,4 +1,5 @@
 import { format } from "date-fns"
+import { v4 as uuidv4 } from "uuid"
 
 const TINYBIRD_API_URL = process.env.NEXT_PUBLIC_TINYBIRD_API_URL
 const TINYBIRD_API_TOKEN = process.env.NEXT_PUBLIC_TINYBIRD_API_TOKEN
@@ -22,6 +23,7 @@ export interface ChecklistData {
     location: string
     species: string
     quantity: number
+    checklist_id: string
     user_id?: string
 }
 
@@ -34,7 +36,14 @@ export async function sendChecklistData(data: ChecklistData) {
                 Authorization: `Bearer ${TINYBIRD_API_TOKEN}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+                timestamp: data.timestamp,
+                location: data.location,
+                species: data.species,
+                quantity: data.quantity,
+                checklist_id: data.checklist_id,
+                user_id: data.user_id
+            }),
         }
     )
 
@@ -104,36 +113,19 @@ export async function fetchTotalData(params: {
         searchParams.set("user_id", params.user_id)
     }
 
-    const [birds, checklists, locations, species] = await Promise.all([
-        fetch(`${TINYBIRD_API_URL}/v0/pipes/get_total_birds.json?${searchParams.toString()}`, {
-            headers: { Authorization: `Bearer ${TINYBIRD_API_TOKEN}` },
-        }),
-        fetch(`${TINYBIRD_API_URL}/v0/pipes/get_total_checklists.json?${searchParams.toString()}`, {
-            headers: { Authorization: `Bearer ${TINYBIRD_API_TOKEN}` },
-        }),
-        fetch(`${TINYBIRD_API_URL}/v0/pipes/get_total_locations.json?${searchParams.toString()}`, {
-            headers: { Authorization: `Bearer ${TINYBIRD_API_TOKEN}` },
-        }),
-        fetch(`${TINYBIRD_API_URL}/v0/pipes/get_total_species.json?${searchParams.toString()}`, {
-            headers: { Authorization: `Bearer ${TINYBIRD_API_TOKEN}` },
-        }),
-    ])
+    const response = await fetch(
+        `${TINYBIRD_API_URL}/v0/pipes/get_totals.json?${searchParams.toString()}`,
+        {
+            headers: {
+                Authorization: `Bearer ${TINYBIRD_API_TOKEN}`,
+            },
+        }
+    )
 
-    if (!birds.ok || !checklists.ok || !locations.ok || !species.ok) {
+    if (!response.ok) {
         throw new Error("Failed to fetch total data")
     }
 
-    const [birdsData, checklistsData, locationsData, speciesData] = await Promise.all([
-        birds.json(),
-        checklists.json(),
-        locations.json(),
-        species.json(),
-    ])
-
-    return {
-        total_birds: birdsData.data[0]?.total_birds || 0,
-        total_checklists: checklistsData.data[0]?.total_checklists || 0,
-        total_locations: locationsData.data[0]?.total_locations || 0,
-        total_species: speciesData.data[0]?.total_species || 0,
-    } as TotalData
+    const data = await response.json()
+    return data.data[0] as TotalData
 } 

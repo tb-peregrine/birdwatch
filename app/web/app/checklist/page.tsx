@@ -4,6 +4,7 @@ import { useState } from "react"
 import { CalendarIcon, MapPin, Plus, X, Minus } from "lucide-react"
 import { format } from "date-fns"
 import { useRouter } from "next/navigation"
+import { v4 as uuidv4 } from "uuid"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -36,7 +37,7 @@ interface SelectedBird {
 
 export default function ChecklistPage() {
   const router = useRouter()
-  const [date, setDate] = useState<Date>()
+  const [date, setDate] = useState<Date>(new Date())
   const [selectedBirds, setSelectedBirds] = useState<SelectedBird[]>([])
   const [selectedLocation, setSelectedLocation] = useState<string>("")
   const [showLocationList, setShowLocationList] = useState(false)
@@ -45,6 +46,14 @@ export default function ChecklistPage() {
   const [birdSearch, setBirdSearch] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
+  const [openDate, setOpenDate] = useState(false)
+
+  const handleDateSelect = (newDate: Date | undefined) => {
+    if (newDate) {
+      setDate(newDate)
+      setOpenDate(false)
+    }
+  }
 
   const handleAddBird = (bird: Bird) => {
     setSelectedBirds((prev) => {
@@ -94,19 +103,21 @@ export default function ChecklistPage() {
     setMessage(null)
 
     try {
+      const checklistId = uuidv4()
       // Send each bird sighting as a separate event
       await Promise.all(selectedBirds.map(bird =>
         sendChecklistData({
           timestamp: date.toISOString(),
           location: selectedLocation,
           species: bird.value,
-          quantity: bird.count
+          quantity: bird.count,
+          checklist_id: checklistId
         })
       ))
 
       setMessage({ type: "success", text: "Checklist submitted successfully!" })
       setTimeout(() => {
-        router.push("/analytics")
+        router.push(`/analytics?location=${encodeURIComponent(selectedLocation)}`)
       }, 1500)
     } catch (error) {
       setMessage({ type: "error", text: "Failed to submit checklist" })
@@ -171,7 +182,7 @@ export default function ChecklistPage() {
 
               <div className="grid gap-2">
                 <Label>Date</Label>
-                <Popover>
+                <Popover open={openDate} onOpenChange={setOpenDate}>
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
@@ -182,7 +193,7 @@ export default function ChecklistPage() {
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+                    <Calendar mode="single" selected={date} onSelect={handleDateSelect} initialFocus />
                   </PopoverContent>
                 </Popover>
               </div>
