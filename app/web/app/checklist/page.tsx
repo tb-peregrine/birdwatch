@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { CalendarIcon, MapPin, Plus, X, Minus } from "lucide-react"
 import { format } from "date-fns"
+import { useRouter } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -15,6 +16,7 @@ import { SiteHeader } from "@/components/site-header"
 import { cn } from "@/lib/utils"
 import birds from "@/lib/birds.json"
 import locations from "@/lib/locations.json"
+import { sendChecklistData } from "@/lib/tinybird"
 
 interface Bird {
   label: string
@@ -33,6 +35,7 @@ interface SelectedBird {
 }
 
 export default function ChecklistPage() {
+  const router = useRouter()
   const [date, setDate] = useState<Date>()
   const [selectedBirds, setSelectedBirds] = useState<SelectedBird[]>([])
   const [selectedLocation, setSelectedLocation] = useState<string>("")
@@ -40,6 +43,8 @@ export default function ChecklistPage() {
   const [showBirdList, setShowBirdList] = useState(false)
   const [locationSearch, setLocationSearch] = useState("")
   const [birdSearch, setBirdSearch] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
 
   const handleAddBird = (bird: Bird) => {
     setSelectedBirds((prev) => {
@@ -78,6 +83,38 @@ export default function ChecklistPage() {
   const selectedLocationLabel = locations.find(
     (loc) => loc.value === selectedLocation
   )?.label
+
+  const handleSubmit = async () => {
+    if (!date || !selectedLocation || selectedBirds.length === 0) {
+      setMessage({ type: "error", text: "Please fill in all required fields" })
+      return
+    }
+
+    setIsSubmitting(true)
+    setMessage(null)
+
+    try {
+      // Send each bird sighting as a separate event
+      await Promise.all(selectedBirds.map(bird =>
+        sendChecklistData({
+          timestamp: date.toISOString(),
+          location: selectedLocation,
+          species: bird.value,
+          quantity: bird.count
+        })
+      ))
+
+      setMessage({ type: "success", text: "Checklist submitted successfully!" })
+      setTimeout(() => {
+        router.push("/analytics")
+      }, 1500)
+    } catch (error) {
+      setMessage({ type: "error", text: "Failed to submit checklist" })
+      console.error(error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -247,7 +284,21 @@ export default function ChecklistPage() {
                 )}
               </div>
 
-              <Button>Save Checklist</Button>
+              {message && (
+                <div className={cn(
+                  "p-3 rounded-md",
+                  message.type === "success" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                )}>
+                  {message.text}
+                </div>
+              )}
+
+              <Button
+                onClick={handleSubmit}
+                disabled={isSubmitting || !date || !selectedLocation || selectedBirds.length === 0}
+              >
+                {isSubmitting ? "Submitting..." : "Save Checklist"}
+              </Button>
             </CardContent>
           </Card>
         </div>
