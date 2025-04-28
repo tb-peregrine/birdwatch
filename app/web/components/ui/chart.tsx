@@ -1,8 +1,7 @@
-import { forwardRef, ReactNode } from "react"
+import { forwardRef, ReactNode, HTMLAttributes } from "react"
 
-interface ChartProps {
+interface ChartProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
-  [key: string]: any
 }
 
 export const Chart = forwardRef<HTMLDivElement, ChartProps>(({ children, ...props }, ref) => (
