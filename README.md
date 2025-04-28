@@ -8,6 +8,10 @@ A modern web application for birdwatchers to record and track their bird sightin
 - **Location Selection**: Choose from a predefined list of birding locations
 - **Bird Counting**: Track both species and individual bird counts
 - **Date Selection**: Record sightings with specific dates
+- **Analytics Dashboard**: View bird sighting trends over time
+  - Timeseries charts showing species counts by day
+  - Total counts for birds, species, checklists, and locations
+  - Filter by date range and location
 - **Responsive Design**: Works on desktop and mobile devices
 
 ## Tech Stack
@@ -17,6 +21,8 @@ A modern web application for birdwatchers to record and track their bird sightin
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [shadcn/ui](https://ui.shadcn.com/) - Re-usable components built with Radix UI and Tailwind CSS
 - [Lucide Icons](https://lucide.dev/) - Beautiful & consistent icons
+- [Tinybird](https://www.tinybird.co/) - Real-time analytics and data processing
+- [Recharts](https://recharts.org/) - Charting library for React
 
 ## Getting Started
 
@@ -37,6 +43,16 @@ yarn install
 pnpm install
 ```
 
+Set up environment variables:
+
+```bash
+cp .env.example .env.local
+```
+
+Fill in the required environment variables:
+- `NEXT_PUBLIC_TINYBIRD_API_URL`: Your Tinybird API URL
+- `NEXT_PUBLIC_TINYBIRD_API_TOKEN`: Your Tinybird API token
+
 Run the development server:
 
 ```bash
@@ -55,12 +71,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `components/` - Reusable UI components
 - `lib/` - Utility functions and data
 - `public/` - Static assets
+- `tinybird/` - Tinybird data sources and endpoints
 
 ## Data
 
-The application uses two main data files:
+The application uses several data sources:
 - `lib/birds.json` - List of bird species with common names
 - `lib/locations.json` - List of birding locations
+- Tinybird data sources:
+  - `bird_sightings` - Stores checklist data
+  - `timeseries_species_by_day` - Aggregates sightings by species and day
+  - `get_totals` - Calculates total counts for birds, species, checklists, and locations
 
 ## Deployment
 
@@ -74,8 +95,9 @@ Check out the [Next.js deployment documentation](https://nextjs.org/docs/deploym
 2. Go to [Vercel](https://vercel.com)
 3. Click "New Project"
 4. Import your GitHub repository
-5. Vercel will automatically detect it's a Next.js project
-6. Click "Deploy"
+5. Add your Tinybird environment variables
+6. Vercel will automatically detect it's a Next.js project
+7. Click "Deploy"
 
 Your site will be deployed at `https://your-project-name.vercel.app`
 
