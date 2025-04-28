@@ -3,7 +3,6 @@
 import { useEffect, useState, useCallback } from "react"
 import { CalendarIcon } from "lucide-react"
 import { format } from "date-fns"
-import { useRouter, useSearchParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SiteHeader } from "@/components/site-header"
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis, Legend } from "recharts"
@@ -25,8 +24,6 @@ interface TimeseriesDataPoint {
 }
 
 export default function AnalyticsPage() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
   const [timeseriesData, setTimeseriesData] = useState<TimeseriesDataPoint[]>([])
   const [totalData, setTotalData] = useState({
     total_birds: 0,
@@ -34,7 +31,6 @@ export default function AnalyticsPage() {
     total_locations: 0,
     total_species: 0
   })
-  const [isLoading, setIsLoading] = useState(true)
   const [startDate, setStartDate] = useState<Date>(subMonths(new Date(), 1))
   const [endDate, setEndDate] = useState<Date>(new Date())
   const [selectedLocation, setSelectedLocation] = useState<string>("")
@@ -44,7 +40,6 @@ export default function AnalyticsPage() {
   const [openEndDate, setOpenEndDate] = useState(false)
 
   const fetchData = useCallback(async () => {
-    setIsLoading(true)
     try {
       const [timeseries, totals] = await Promise.all([
         fetchTimeseriesData({
@@ -76,8 +71,6 @@ export default function AnalyticsPage() {
       setTotalData(totals)
     } catch (error) {
       console.error("Failed to fetch analytics data:", error)
-    } finally {
-      setIsLoading(false)
     }
   }, [startDate, endDate, selectedLocation])
 
