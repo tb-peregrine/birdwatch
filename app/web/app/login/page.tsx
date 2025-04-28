@@ -1,5 +1,3 @@
-import { useState } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
@@ -31,7 +29,7 @@ export default function LoginPage() {
           <CardFooter className="flex flex-col gap-4">
             <Button className="w-full">Login</Button>
             <div className="text-sm text-center text-muted-foreground">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link href="/signup" className="text-primary underline-offset-4 hover:underline">
                 Sign up
               </Link>

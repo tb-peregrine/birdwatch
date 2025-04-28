@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <h3 className="text-xl font-semibold">Explore Locations</h3>
             <p className="text-muted-foreground">
-              Discover popular birding spots and track where you've seen different species.
+              Discover popular birding spots and track where you&apos;ve seen different species.
             </p>
           </div>
           <div className="flex flex-col items-center text-center gap-4">
