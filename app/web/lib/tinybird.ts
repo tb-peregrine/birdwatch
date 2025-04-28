@@ -25,6 +25,12 @@ export interface TotalsData {
     total_locations: number
 }
 
+interface FilterParams {
+    start_date?: string
+    end_date?: string
+    location?: string
+}
+
 export async function sendChecklistData(sightings: ChecklistData[]) {
     // Convert array of sightings to NDJSON format
     const ndjson = sightings.map(sighting => JSON.stringify(sighting)).join('\n')
@@ -48,9 +54,14 @@ export async function sendChecklistData(sightings: ChecklistData[]) {
     return response.json()
 }
 
-export async function fetchTimeseriesData(): Promise<TimeseriesData[]> {
+export async function fetchTimeseriesData(params: FilterParams = {}): Promise<TimeseriesData[]> {
+    const queryParams = new URLSearchParams()
+    if (params.start_date) queryParams.append('start_date', params.start_date)
+    if (params.end_date) queryParams.append('end_date', params.end_date)
+    if (params.location) queryParams.append('location', params.location)
+
     const response = await fetch(
-        `${TINYBIRD_API_URL}/v0/pipes/timeseries_species_by_day.json`,
+        `${TINYBIRD_API_URL}/v0/pipes/timeseries_species_by_day.json?${queryParams.toString()}`,
         {
             headers: {
                 Authorization: `Bearer ${TINYBIRD_API_TOKEN}`,
@@ -66,9 +77,14 @@ export async function fetchTimeseriesData(): Promise<TimeseriesData[]> {
     return data.data
 }
 
-export async function fetchTotalData(): Promise<TotalsData> {
+export async function fetchTotalData(params: FilterParams = {}): Promise<TotalsData> {
+    const queryParams = new URLSearchParams()
+    if (params.start_date) queryParams.append('start_date', params.start_date)
+    if (params.end_date) queryParams.append('end_date', params.end_date)
+    if (params.location) queryParams.append('location', params.location)
+
     const response = await fetch(
-        `${TINYBIRD_API_URL}/v0/pipes/get_totals.json`,
+        `${TINYBIRD_API_URL}/v0/pipes/get_totals.json?${queryParams.toString()}`,
         {
             headers: {
                 Authorization: `Bearer ${TINYBIRD_API_TOKEN}`,

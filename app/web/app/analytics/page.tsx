@@ -35,13 +35,28 @@ export default function AnalyticsPage() {
     total_species: 0
   })
   const [isLoading, setIsLoading] = useState(true)
+  const [startDate, setStartDate] = useState<Date>(subMonths(new Date(), 1))
+  const [endDate, setEndDate] = useState<Date>(new Date())
+  const [selectedLocation, setSelectedLocation] = useState<string>("")
+  const [showLocationList, setShowLocationList] = useState(false)
+  const [locationSearch, setLocationSearch] = useState("")
+  const [openStartDate, setOpenStartDate] = useState(false)
+  const [openEndDate, setOpenEndDate] = useState(false)
 
   const fetchData = async () => {
     setIsLoading(true)
     try {
       const [timeseries, totals] = await Promise.all([
-        fetchTimeseriesData(),
-        fetchTotalData()
+        fetchTimeseriesData({
+          start_date: startDate.toISOString().split('T')[0],
+          end_date: endDate.toISOString().split('T')[0],
+          location: selectedLocation
+        }),
+        fetchTotalData({
+          start_date: startDate.toISOString().split('T')[0],
+          end_date: endDate.toISOString().split('T')[0],
+          location: selectedLocation
+        })
       ])
 
       // Group the data by day and species
@@ -68,7 +83,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [startDate, endDate, selectedLocation])
 
   const getBirdLabel = (value: string) => {
     const bird = birds.find(b => b.value === value)
@@ -85,6 +100,109 @@ export default function AnalyticsPage() {
               <h1 className="text-3xl font-bold tracking-tight">Analytics</h1>
               <p className="text-lg text-muted-foreground">Track your birding progress and insights</p>
             </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Filters</CardTitle>
+                <CardDescription>Filter your analytics data by date range and location</CardDescription>
+              </CardHeader>
+              <CardContent className="grid gap-4 md:grid-cols-3">
+                <div className="grid gap-2">
+                  <Label>Start Date</Label>
+                  <Popover open={openStartDate} onOpenChange={setOpenStartDate}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className={cn("w-full justify-start text-left font-normal", !startDate && "text-muted-foreground")}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {startDate ? format(startDate, "PPP") : "Pick a date"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={startDate}
+                        onSelect={(date) => {
+                          if (date) {
+                            setStartDate(date)
+                            setOpenStartDate(false)
+                          }
+                        }}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+                <div className="grid gap-2">
+                  <Label>End Date</Label>
+                  <Popover open={openEndDate} onOpenChange={setOpenEndDate}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className={cn("w-full justify-start text-left font-normal", !endDate && "text-muted-foreground")}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {endDate ? format(endDate, "PPP") : "Pick a date"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={endDate}
+                        onSelect={(date) => {
+                          if (date) {
+                            setEndDate(date)
+                            setOpenEndDate(false)
+                          }
+                        }}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+                <div className="grid gap-2">
+                  <Label>Location</Label>
+                  <div className="relative">
+                    <Input
+                      placeholder="Search locations..."
+                      value={selectedLocation ? locations.find(loc => loc.value === selectedLocation)?.label || "" : locationSearch}
+                      onChange={(e) => setLocationSearch(e.target.value)}
+                      onFocus={() => setShowLocationList(true)}
+                      className="w-full"
+                    />
+                    {showLocationList && (
+                      <div className="absolute z-10 w-full mt-1">
+                        <Command className="rounded-lg border shadow-md">
+                          <CommandInput placeholder="Search locations..." value={locationSearch} onValueChange={setLocationSearch} />
+                          <CommandList>
+                            <CommandEmpty>No locations found.</CommandEmpty>
+                            <CommandGroup>
+                              {locations
+                                .filter((location) =>
+                                  location.label.toLowerCase().includes(locationSearch.toLowerCase())
+                                )
+                                .map((location) => (
+                                  <CommandItem
+                                    key={location.value}
+                                    onSelect={() => {
+                                      setSelectedLocation(location.value)
+                                      setShowLocationList(false)
+                                      setLocationSearch("")
+                                    }}
+                                  >
+                                    {location.label}
+                                  </CommandItem>
+                                ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
             <div className="grid gap-6">
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
